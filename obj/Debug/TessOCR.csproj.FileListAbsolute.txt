@@ -1,0 +1,9 @@
+c:\users\chanhui\documents\visual studio 2015\Projects\TessOCR\TessOCR\bin\Debug\TessOCR.exe.config
+c:\users\chanhui\documents\visual studio 2015\Projects\TessOCR\TessOCR\bin\Debug\TessOCR.exe
+c:\users\chanhui\documents\visual studio 2015\Projects\TessOCR\TessOCR\bin\Debug\TessOCR.pdb
+c:\users\chanhui\documents\visual studio 2015\Projects\TessOCR\TessOCR\obj\Debug\TessOCR.csprojResolveAssemblyReference.cache
+c:\users\chanhui\documents\visual studio 2015\Projects\TessOCR\TessOCR\obj\Debug\TessOCR.Form1.resources
+c:\users\chanhui\documents\visual studio 2015\Projects\TessOCR\TessOCR\obj\Debug\TessOCR.Properties.Resources.resources
+c:\users\chanhui\documents\visual studio 2015\Projects\TessOCR\TessOCR\obj\Debug\TessOCR.csproj.GenerateResource.Cache
+c:\users\chanhui\documents\visual studio 2015\Projects\TessOCR\TessOCR\obj\Debug\TessOCR.exe
+c:\users\chanhui\documents\visual studio 2015\Projects\TessOCR\TessOCR\obj\Debug\TessOCR.pdb
