@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
+using System.Net.Sockets;
 
 namespace TessOCR
 {
@@ -25,6 +27,20 @@ namespace TessOCR
             openFileDialog1.ShowDialog();
             if (openFileDialog1.FileName != null)
                 textBox1.Text = openFileDialog1.FileName;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            byte[] data = new Byte[1024];
+            String test = textBox1.Text;
+
+            //서버로 이미지 전송
+            using (var tcp = new TcpClient("192.168.188.128", 5007))
+            {
+                byte[] image = File.ReadAllBytes(test);
+                tcp.GetStream().Write(image, 0, image.Length);
+            }
+
         }
     }
 }
