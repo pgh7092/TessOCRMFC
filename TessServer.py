@@ -7,7 +7,7 @@ import time
 from PIL import Image
 
 def Main():
-	s = socket.socket()
+	s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 	host = ''
 	port = 5007
 	sum = 0
@@ -28,10 +28,14 @@ def Main():
 		if not data:
 			break
 		file.write(data)
-
-	print tesserocr.file_to_text('image.png')
-
+		file.flush()
+	print(tesserocr.file_to_text('image.png'))
+	tst = tesserocr.file_to_text('image.png')
+	f = open('tess.txt', 'w')
+	f.write(tst.encode('utf-8'))
+	s.send('tess.txt')
 	print("Done.")
+
 	c.close()
 	s.close()
 
