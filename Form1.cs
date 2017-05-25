@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using System.Net.Sockets;
+using System.Threading;
 
 namespace TessOCR
 {
@@ -29,18 +30,38 @@ namespace TessOCR
                 textBox1.Text = openFileDialog1.FileName;
         }
 
+        private void btnSavePath_Click(object sender, EventArgs e)
+        {
+            folderBrowserDialog1.ShowDialog();
+            folderBrowserDialog1.ShowNewFolderButton = true;
+            if(folderBrowserDialog1.SelectedPath != null)
+            {
+                textBox3.Text = folderBrowserDialog1.SelectedPath;
+            }
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
-            byte[] data = new Byte[1024];
             String test = textBox1.Text;
 
-            //서버로 이미지 전송
-            using (var tcp = new TcpClient("192.168.188.128", 5007))
-            {
-                byte[] image = File.ReadAllBytes(test);
-                tcp.GetStream().Write(image, 0, image.Length);
-            }
+            Stream imageFileStream = File.OpenRead(test);
+            byte[] byteArray = new byte[imageFileStream.Length];
+            imageFileStream.Read(byteArray, 0, (int)imageFileStream.Length);
+            TcpClient client = new TcpClient("220.149.11.210", 5007);
+            textBox2.AppendText("waiting for a connection....\n");
+            NetworkStream network = client.GetStream();
+            textBox2.AppendText("Connect Success\n");
+            network.Write(byteArray, 0, byteArray.GetLength(0));
+            network.Flush();
 
+            FileStream fileStream = new FileStream(textBox3.Text + "\\TesserOCR.txt", FileMode.Create, FileAccess.Write);
+            BinaryWriter read = new BinaryWriter(fileStream);
+            byte[] bytes = new byte[1024];
+            read.Write(bytes, 0, bytes.Length);
+            read.Flush();
+            textBox2.AppendText("OCR Complete\n");
+
+            client.Close();
         }
     }
 }

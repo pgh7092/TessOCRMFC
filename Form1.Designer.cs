@@ -34,6 +34,11 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.textBox2 = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.btnSavePath = new System.Windows.Forms.Button();
+            this.openFileDialog2 = new System.Windows.Forms.OpenFileDialog();
+            this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.SuspendLayout();
             // 
             // label1
@@ -75,20 +80,57 @@
             this.button1.TabIndex = 3;
             this.button1.Text = "업로드";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(16, 50);
+            this.textBox2.Location = new System.Drawing.Point(16, 101);
             this.textBox2.Multiline = true;
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(477, 269);
+            this.textBox2.Size = new System.Drawing.Size(477, 218);
             this.textBox2.TabIndex = 4;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("굴림", 15F);
+            this.label2.Location = new System.Drawing.Point(14, 62);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(117, 20);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "저장 위치 : ";
+            // 
+            // textBox3
+            // 
+            this.textBox3.Location = new System.Drawing.Point(126, 62);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(240, 21);
+            this.textBox3.TabIndex = 7;
+            this.textBox3.Text = "C:\\Users\\Chanhui\\Desktop";
+            // 
+            // btnSavePath
+            // 
+            this.btnSavePath.Location = new System.Drawing.Point(373, 59);
+            this.btnSavePath.Name = "btnSavePath";
+            this.btnSavePath.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.btnSavePath.Size = new System.Drawing.Size(27, 23);
+            this.btnSavePath.TabIndex = 8;
+            this.btnSavePath.Text = "...";
+            this.btnSavePath.UseVisualStyleBackColor = true;
+            this.btnSavePath.Click += new System.EventHandler(this.btnSavePath_Click);
+            // 
+            // openFileDialog2
+            // 
+            this.openFileDialog2.FileName = "openFileDialog2";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(510, 331);
+            this.Controls.Add(this.btnSavePath);
+            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.textBox1);
@@ -109,6 +151,11 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.Button btnSavePath;
+        private System.Windows.Forms.OpenFileDialog openFileDialog2;
+        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
     }
 }
 
