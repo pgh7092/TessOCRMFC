@@ -3,8 +3,8 @@ import os
 import io
 import os.path
 import tesserocr
-import time
 from PIL import Image
+from mtranslate import translate
 
 def Main():
 	s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -29,11 +29,26 @@ def Main():
 			break
 		file.write(data)
 		file.flush()
+
+	print("Image To Text")
 	print(tesserocr.file_to_text('image.png'))
 	tst = tesserocr.file_to_text('image.png')
-	f = open('tess.txt', 'w')
+
+
+	f = open('tess.txt', 'r+')
 	f.write(tst.encode('utf-8'))
-	s.send('tess.txt')
+	f.flush()
+
+	fw = open('trans.txt', 'w')
+	
+	fdata = f.read()
+		
+	print("Text English -> Korean")
+	print(translate(fdata, 'ko'))
+	fdata = translate(fdata, 'ko')	
+	fw.write(fdata.encode('utf-8'))
+	
+	s.send('trans.txt')
 	print("Done.")
 
 	c.close()
