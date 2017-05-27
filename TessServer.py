@@ -35,20 +35,21 @@ def Main():
 	tst = tesserocr.file_to_text('image.png')
 
 
-	f = open('tess.txt', 'r+')
-	f.write(tst.encode('utf-8'))
+	f = open('tess.txt', 'w')
+	f.write(tst.encode('utf-8'))s
 	f.flush()
+	f.close()
 
 	fw = open('trans.txt', 'w')
-	
-	fdata = f.read()
-		
-	print("Text English -> Korean")
-	print(translate(fdata, 'ko'))
-	fdata = translate(fdata, 'ko')	
-	fw.write(fdata.encode('utf-8'))
-	
-	s.send('trans.txt')
+	f = open('tess.txt', 'r')
+	while True:
+		fdata = f.readline()
+		if not fdata: break;
+		fdata = translate(fdata, 'ko')
+		print(fdata)
+		fw.write(fdata.encode('utf-8'))
+		fw.write('\n')
+
 	print("Done.")
 
 	c.close()
